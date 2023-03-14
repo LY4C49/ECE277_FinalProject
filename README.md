@@ -7,7 +7,10 @@ We realize some DIP algorithms using GPU to accelearte. We also provide Python i
 - Sharpening algorithm
 - DCT and IDCT (using DCT to compress an image)
 
-To compile our project, you should run '''pip install -e .'''
+To compile our project, you should run
+'''
+pip install -e .
+'''
 
 Hardware Support:
 - Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz   2.30 GHz
