@@ -6,5 +6,3 @@ We realize some DIP algorithms using GPU to accelearte. We also provide Python i
 
 - Sharpening algorithm
 - DCT and IDCT
-
-run pip install -e . to compile .cu and .cpp

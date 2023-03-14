@@ -6,23 +6,18 @@
 
 
 __global__ void sharpening_kernel(const float* a, const float* b, float* c, int n){
-    //int idx = blockIdx.x * blockDim.x + threadIdx.x;
-    //if (idx < n){
-    //    c[idx] = a[idx] + b[idx];
-    //}
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
     int idy = blockIdx.y * blockDim.y + threadIdx.y;
     float result = 0.0;
     for (int i = 0;i < 3;i++){
         for (int j = 0;j < 3;j++){
-            int index_x = 8 * blockIdx.x + threadIdx.x + i;
-            int index_y = 8 * blockIdx.y + threadIdx.y + j;
-            //temp = b[i][j] * a[index_x][index_y];
-            float temp = b[i * 3 + j] * a[index_x * n + index_y];
+            int index_x = 8 * blockIdx.x + threadIdx.x + j;
+            int index_y = 8 * blockIdx.y + threadIdx.y + i;
+            float temp = b[j * 3 + i] * a[index_y * n + index_x];
             result += temp;
         }
     }
-    c[idx * (n - 2) + idy] = result;
+    c[idy * (n - 2) + idx] = result;
     //c[idx][idy] = result;
 }
 

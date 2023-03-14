@@ -10,10 +10,10 @@ __global__ void dct_kernel(const float* a, const float* b, float* c, int n){
 
     float result = 0.0;
     for (int i = 0;i < 8;i++){
-        result += a[i * 8 + relative_y] * b[idx * n + inital_y + i];
+        result += a[relative_y * 8 + i] * b[(inital_y + i) * n + idx];
     }
 
-    c[idx * n + idy] = result;
+    c[idy * n + idx] = result;
 
 }
 

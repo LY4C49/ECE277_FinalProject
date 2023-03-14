@@ -7,9 +7,9 @@ __global__ void comp_kernel(const float* a, const float* b, float* c, int n){
     int idy = blockIdx.y * blockDim.y + threadIdx.y;
 
 
-    float result = a[idx * n + idy] * b[threadIdx.x * 8 + threadIdx.y];
+    float result = a[idy * n + idx] * b[threadIdx.y * 8 + threadIdx.x];
 
-    c[idx * n + idy] = result;
+    c[idy * n + idx] = result;
 
 }
 

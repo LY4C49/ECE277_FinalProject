@@ -5,7 +5,7 @@ __global__ void image_add_kernel(const float* a, const float* b, float* c,int n)
 
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
     int idy = blockIdx.y * blockDim.y + threadIdx.y;
-    c[idx * n + idy] = a[idx * n + idy] + b[idx * n + idy];
+    c[idy * n + idx] = a[idy * n + idx] + b[idy * n + idx];
 }
 
 
