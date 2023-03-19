@@ -28,4 +28,4 @@ if __name__ == '__main__':
 
     DCT_compression.DCT_compression_cpu("img/img1.png", "img/img1", 4096, mask)
 
-    Sharpening.sharpening_cpu("img/img1.png", "img/img1", 4096, kernel)
+    #Sharpening.sharpening_cpu("img/img1.png", "img/img1", 4096, kernel)

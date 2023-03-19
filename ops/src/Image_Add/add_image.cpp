@@ -10,30 +10,21 @@
   CHECK_CONTIGUOUS(x)
 
 
-//void sharpening_launcher(const float* a, const float* b, float* c, int n);
 void image_add_launcher(const float* a, const float* b, float* c,int n);
-
-
 
 void image_add_gpu(at::Tensor a_tensor, at::Tensor b_tensor, at::Tensor c_tensor){
     CHECK_INPUT(a_tensor);
     CHECK_INPUT(b_tensor);
     CHECK_INPUT(c_tensor);
 
-
-
-//float(*a)[3] = new float[2][3];
-
     const float* a = a_tensor.data_ptr<float>();
     const float* b = b_tensor.data_ptr<float>();
     float* c = c_tensor.data_ptr<float>();
-    //int row = a_tensor.size(0);
-    //int col = a_tensor.size(1);
     int n = a_tensor.size(0);
     image_add_launcher(a, b, c, n);
 }
 
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
-  m.def("forward", &image_add_gpu, "sum two arrays (CUDA)");
+  m.def("forward", &image_add_gpu, "Add two images");
 }

@@ -42,7 +42,6 @@ def DCT_compression_cpu(img_path, save_path, resize, mask):
         img_f32_cut = image_np[:height_, :width_]
         img_dct = np.zeros((height_, width_), dtype=np.float32)
         new_img = np.zeros((height_, width_), dtype=np.float32)
-        print(new_img.shape, img_dct.shape)
         for h in range(block_y):
             for w in range(block_x):
                 img_block = img_f32_cut[8 * h: 8 * (h + 1), 8 * w: 8 * (w + 1)]
